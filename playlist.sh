@@ -1,11 +1,20 @@
-find $1/*.mp3 -printf "%f\n"| cat -n > songlist.text #look for the given argument directory for mp3 files
-if [[ $# -eq 0 ]] ; then #if statement to return error if no directory given
-echo "Warning: No directory given"
-exit 0
+#look for the given argument directory for mp3 files
+find $1/*.mp3 -printf "%f\n"| cat -n > songlist.text
+
+#if statement to return error if no directory given
+if [[ $# -eq 0 ]] ; then
+  echo "Warning: No directory given"
+  exit 0
 fi
-source var.text #look for previous z variable if the script has been played previously
-declare -i x=1 #declare index value
-if [[ $z == "" ]] #if statement to defult z to 0 for first time playback
+
+#look for previous z variable if the script has been played previously
+source var.text 
+
+#declare index value
+declare -i x=1 
+
+#if statement to defult z to 0 for first time playback
+if [[ $z == "" ]] 
 then
 declare -i z=0
 fi
